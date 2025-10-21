@@ -4,8 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Say It! With a Straight Face</title>
+    <link rel="stylesheet" href="/src/main.scss">
 </head>
-<body>
+<body class="phase-01-active">
+    <div id="container">
+        <!-- Phase 1 - Splash -->
+        <div class="game-phase game-phase-01 has-hf">
+            <header class="header">
+                <a
+                    href="https://cthdrl.co"
+                    target="_blank"
+                    class="logo-link"
+                >
+                    <img src="/logo.svg" />
+                </a>
+            </header>
+
+            <div class="content">
+                <h1>
+                    <span>Say it! With a</span>
+                    <span>Straight Face</span>
+                </h1>
+                <p class="byline">
+                    An interactive facial recognition experience.
+                    <!-- <a href="https://cthdrl.co" target="_blank"
+                        >cthdrl.co</a
+                    > -->
+                </p>
+                <button class="btn">Make me laugh</button>
+            </div>
+
+            <footer class="footer">
+                <a
+                    href="https://www.awwwards.com/academy/"
+                    target="_blank"
+                    class="academy-link"
+                >
+                    <img src="/awwwards.svg" />
+                </a>
+            </footer>
+        </div>
+    </div>
     
     <script type="module" src="./src/main.js"></script>
 </body>

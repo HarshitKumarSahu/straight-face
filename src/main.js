@@ -1,3 +1,3 @@
 import "./main.scss"
 
-alert("okay")
+// alert("okay")
