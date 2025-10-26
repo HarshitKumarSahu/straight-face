@@ -1,4 +1,5 @@
 import getStream from "./getStream.js"
+import initAudioVisualizer from "./initAudioVisualizer.js"
 import setNextPhrase from './setNextPhrase'
 
 // init phase 03
@@ -10,6 +11,7 @@ export default async () => {
     // hide phase 02 and show phase 03
     document.body.classList.remove("phase-02-active")
     document.body.classList.add("phase-03-active")
+    document.body.classList.add("tracking")
 
     const streamW = stream.getVideoTracks()[0].getSettings().width
     const streamH = stream.getVideoTracks()[0].getSettings().height
@@ -26,5 +28,9 @@ export default async () => {
     // Display initial phrase
     // for user to speak
     setNextPhrase()
+
+    // Start drawing the waveforms of the stream
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)()
+    const source = initAudioVisualizer(audioCtx, stream)
     
 }
