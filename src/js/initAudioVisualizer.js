@@ -4,7 +4,7 @@ export default (audioCtx, stream) => {
     const source = audioCtx.createMediaStreamSource(stream)
     source.connect(analyser)
 
-    analyser.fftSize = 256
+    analyser.fftSize = 512
     const bufferLength = analyser.frequencyBinCount
     const dataArray = new Uint8Array(bufferLength)
 
