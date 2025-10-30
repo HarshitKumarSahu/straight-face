@@ -214,9 +214,24 @@
                     viewBox="0 0 640 480"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    <circle cx="-100" cy="-100" r="6" />
-                    <circle cx="-100" cy="-100" r="6" />
-                    <circle cx="-100" cy="-100" r="6" />
+                    <circle
+                        transform="translate(-100, 100)"
+                        cx="0"
+                        cy="0"
+                        r="6"
+                    />
+                    <circle
+                        transform="translate(-100, 100)"
+                        cx="0"
+                        cy="0"
+                        r="6"
+                    />
+                    <circle
+                        transform="translate(-100, 100)"
+                        cx="0"
+                        cy="0"
+                        r="6"
+                    />
                 </svg>
 
                 <span class="label">Face Tracking</span>
@@ -242,6 +257,11 @@
 
     </div>
     
-    <script type="module" src="./src/main.js"></script>
+    <!-- Tensorflow -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/blazeface"></script>
+
+    <!-- Main Script -->
+    <script type="module" src="/src/main.js"></script>
 </body>
 </html>
