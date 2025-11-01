@@ -1,7 +1,7 @@
-@import "./scss/base.scss";
-@import "./scss/animation.scss";
-@import "./scss//header-footer.scss";
-@import "./scss//phase01.scss";
-@import "./scss//phase02.scss";
-@import "./scss//phase03.scss";
-@import "./scss//gameOver.scss";
+@use './scss/base' as *;
+@use './scss/animation' as *;
+@use './scss/header-footer' as *;
+@use './scss/phase01' as *;
+@use './scss/phase02' as *;
+@use "./scss/phase03" as *;
+@use "./scss/gameOver" as *;

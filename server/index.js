@@ -5,7 +5,7 @@ dotenv.config()
 const isDev = process.env.NODE_ENV !== "production"
 
 const express = require("express")
-// const { connection } = require("./io")
+const { connection } = require("./io")
 
 /**
  * Server
@@ -18,7 +18,7 @@ const io = require("socket.io")(server)
 /**
  * Handle socket connection
  */
-// io.on("connection", connection)
+io.on("connection", connection)
 io.on('error', (err) => {
     console.log("Caught Socket err:", err);
     
