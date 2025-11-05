@@ -20,13 +20,11 @@ window.addEventListener('mousemove', (evt) => {
 })
 
 // Fade in image
-setTimeout(
-    () =>
-        document
-            .querySelector('.fullscreen-background')
-            .classList.add('visible'),
-    400
-)
+// setTimeout(
+    // () =>
+document.querySelector('.fullscreen-background').classList.add('visible')
+    // 400
+// )
 
 // Reduced motion
 const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
