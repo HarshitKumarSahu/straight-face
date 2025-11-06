@@ -62,10 +62,19 @@ const io = require('socket.io')(server, {
     },
 })
 
+// Health check endpoint
+app.get('/health', (req, res) => {
+    res.json({ status: 'ok', service: 'straightface', socket: 'enabled' })
+})
+
 // handle socket connections
-io.on('connection', connection)
+io.on('connection', (client) => {
+    console.log('✅ Client connected:', client.id)
+    connection(client)
+})
+
 io.on('error', (err) => {
-    console.log('Caught Socket ERR:', err)
+    console.error('❌ Socket.IO error:', err)
 })
 
 // Start server

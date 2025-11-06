@@ -32,13 +32,37 @@ export default async () => {
     landmarkSVG.setAttribute('viewBox', `0 0 ${streamW} ${streamH}`)
 
     // create socket connection (use backend URL if provided)
-    const envSocketUrl = (typeof import !== 'undefined' && import.meta && import.meta.env && import.meta.env.VITE_SOCKET_URL) ? import.meta.env.VITE_SOCKET_URL : null
-    const socketBaseURL = (envSocketUrl || 'https://straightface.onrender.com').replace(/\/$/, '')
-    console.log('[socket] connecting to', socketBaseURL)
+    const socketBaseURL = "https://straightface.onrender.com".replace(/\/$/, '')
+    console.log('[Socket] Connecting to:', socketBaseURL)
+    
     const socket = io(socketBaseURL, {
         transports: ['websocket', 'polling'],
         withCredentials: false,
-        path: '/socket.io'
+        reconnection: true,
+        reconnectionAttempts: 5,
+        reconnectionDelay: 1000,
+    })
+
+    // Socket connection event handlers for debugging
+    socket.on('connect', () => {
+        console.log('[Socket] ✅ Connected! ID:', socket.id)
+    })
+
+    socket.on('disconnect', (reason) => {
+        console.warn('[Socket] ❌ Disconnected:', reason)
+    })
+
+    socket.on('connect_error', (error) => {
+        console.error('[Socket] ❌ Connection error:', error.message)
+        console.error('[Socket] Make sure the server is running as a Web Service (not Static Site) on Render')
+    })
+
+    socket.on('reconnect_attempt', (attemptNumber) => {
+        console.log('[Socket] 🔄 Reconnection attempt:', attemptNumber)
+    })
+
+    socket.on('reconnect_failed', () => {
+        console.error('[Socket] ❌ Reconnection failed. Server may not be running.')
     })
 
     // Show video feed
