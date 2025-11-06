@@ -1,1 +1,7 @@
-export default ['happiness', 'anger', 'disgust', 'sadness', 'surprise']
+export default [
+    'happiness', 
+    'anger', 
+    'disgust', 
+    'sadness', 
+    'surprise'
+]

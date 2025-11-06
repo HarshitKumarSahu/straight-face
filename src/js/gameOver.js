@@ -52,4 +52,9 @@ export default (score, emotion, socket) => {
 
     // Show game over screen
     document.body.classList.add('game-over')
+
+    // Play game over sound
+    const gameOverSound = new Audio('/gameover.mp3') // Update path as needed
+    gameOverSound.volume = 0.75 // Optional: Adjust volume (0-1)
+    gameOverSound.play().catch(err => console.warn('Audio play failed:', err)) // Handle autoplay restrictions
 }

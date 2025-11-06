@@ -1,39 +1,8 @@
 const facePlusPlus = require('./facePlusPlus');
 const _ = require('lodash');
-// const createAssemblyStream = require('./assemblyai');
 
 module.exports = {
     connection(client) {
-        // === SPEECH TRANSCRIPTION (AssemblyAI) ===
-        // let speechStream = null;
-
-        // client.on('audio.transcript.connect', () => {
-        //     try {
-        //         speechStream = createAssemblyStream(client);
-        //         console.log(speechStream);
-                
-        //     } catch (err) {
-        //         console.error('Speech connect error:', err.message);
-        //         client.emit('server.error', { type: 'speech', message: err.message });
-        //     }
-        // });
-
-        // client.on('audio.transcript.data', (chunk) => {
-        //     try {
-        //         if (speechStream && chunk) {
-        //             speechStream.write(chunk);
-        //         }
-        //     } catch (err) {
-        //         console.error('Speech write error:', err.message);
-        //     }
-        // });
-
-        // client.on('disconnect', () => {
-        //     try {
-        //         if (speechStream) speechStream.end();
-        //     } catch (_) {}
-        // });
-
         // === ONLY FACE++ EMOTION DETECTION ===
         let faceInFlight = false;
         client.on('video.analysis.snapshot', async (dataURL) => {
