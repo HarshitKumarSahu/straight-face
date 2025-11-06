@@ -4,7 +4,7 @@ An interactive web game that challenges you to read absurd phrases aloud **witho
 
 Built with real-time facial emotion detection, speech recognition, and a healthy dose of humor.
 
-![Gameplay Preview](/preview.jpg)  
+![Gameplay Preview](./public/preview.jpg)  
 
 ---
 

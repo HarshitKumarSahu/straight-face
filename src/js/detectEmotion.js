@@ -46,7 +46,7 @@ export default async (video, socket) => {
             const onError = (err) => {
                 socket.offAny(onError)
                 socket.offAny(onData)
-                return reject(data)
+                return reject(err)
             }
 
             // Wait for video analysis result

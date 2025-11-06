@@ -49,13 +49,18 @@ dotenv.config()
 const isDev = process.env.NODE_ENV !== 'production'
 
 const express = require('express')
-const path = require('path')  // ADD THIS IMPORT
+const path = require('path')
 const { connection } = require('./io')
 
 // create server
 const app = express()
 const server = require('http').createServer(app)
-const io = require('socket.io')(server)  // ATTACH io TO THE HTTP SERVER (if not already)
+const io = require('socket.io')(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+    },
+})
 
 // handle socket connections
 io.on('connection', connection)
@@ -77,12 +82,13 @@ io.on('error', (err) => {
 
         // If production...
     } else {
-        // Serve static assets from dist
-        app.use(express.static('dist'))
+        // Serve static assets from the built Vite app
+        const distDir = path.join(__dirname, '..', 'dist')
+        app.use(express.static(distDir))
 
-        // ADD THIS: Serve index.html for root and any non-static paths
+        // Serve index.html for SPA routes
         app.get('*', (req, res) => {
-            res.sendFile(path.resolve(__dirname, 'dist', 'index.html'))
+            res.sendFile(path.join(distDir, 'index.html'))
         })
     }
 
