@@ -32,10 +32,13 @@ export default async () => {
     landmarkSVG.setAttribute('viewBox', `0 0 ${streamW} ${streamH}`)
 
     // create socket connection (use backend URL if provided)
-    const socketBaseURL = "https://straightface.onrender.com/"
+    const envSocketUrl = (typeof import !== 'undefined' && import.meta && import.meta.env && import.meta.env.VITE_SOCKET_URL) ? import.meta.env.VITE_SOCKET_URL : null
+    const socketBaseURL = (envSocketUrl || 'https://straightface.onrender.com').replace(/\/$/, '')
+    console.log('[socket] connecting to', socketBaseURL)
     const socket = io(socketBaseURL, {
         transports: ['websocket', 'polling'],
         withCredentials: false,
+        path: '/socket.io'
     })
 
     // Show video feed
