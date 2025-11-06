@@ -31,8 +31,12 @@ export default async () => {
     const landmarkSVG = document.querySelector('svg.landmarks')
     landmarkSVG.setAttribute('viewBox', `0 0 ${streamW} ${streamH}`)
 
-    // create socket connection
-    const socket = io()
+    // create socket connection (use backend URL if provided)
+    const socketBaseURL = "https://straightface.onrender.com/"
+    const socket = io(socketBaseURL, {
+        transports: ['websocket', 'polling'],
+        withCredentials: false,
+    })
 
     // Show video feed
     var video = document.querySelector('video.face-readout')
