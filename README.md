@@ -8,6 +8,9 @@ Built with real-time facial emotion detection, speech recognition, and a healthy
 
 ---
 
+## Demo 
+[https://straightface.onrender.com/](https://straightface.onrender.com/)
+
 ## Features
 
 - **3-Phase Experience**:
